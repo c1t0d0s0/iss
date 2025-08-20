@@ -31,18 +31,16 @@
 
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-            // 地図の初期化
-            var mymap = L.map('mapid').setView([0, 0], 3);
+            var mymap;
+            var issMarker;
 
             // OpenStreetMapのタイルレイヤーを追加
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(mymap);
-
-            // ISSのマーカーを作成
-            var issMarker = L.marker([0, 0]).addTo(mymap);
-            issMarker.bindPopup("<b>ISSの現在位置</b><br>経度: <span id='longitude'></span><br>緯度: <span id='latitude'></span>").openPopup();
+            function addTileLayer(map) {
+                L.tileLayer('https{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+            }
 
             // ISSの位置情報を取得して地図を更新する関数
             function getISSLocation() {
@@ -52,15 +50,24 @@
                         var lat = data.latitude;
                         var lon = data.longitude;
 
-                        // マーカーの位置を更新
-                        issMarker.setLatLng([lat, lon]);
+                        if (!mymap) {
+                            // 地図の初期化
+                            mymap = L.map('mapid').setView([lat, lon], 3);
+                            addTileLayer(mymap);
+
+                            // ISSのマーカーを作成
+                            issMarker = L.marker([lat, lon]).addTo(mymap);
+                            issMarker.bindPopup("<b>ISSの現在位置</b><br>経度: <span id='longitude'></span><br>緯度: <span id='latitude'></span>").openPopup();
+                        } else {
+                            // マーカーの位置を更新
+                            issMarker.setLatLng([lat, lon]);
+                            // 地図の中心を更新
+                            mymap.panTo([lat, lon]);
+                        }
                         
                         // ポップアップの内容を更新
                         document.getElementById('longitude').textContent = lon.toFixed(2);
                         document.getElementById('latitude').textContent = lat.toFixed(2);
-
-                        // 地図の中心を更新
-                        mymap.panTo([lat, lon]);
                     })
                     .catch(error => console.error('Error fetching ISS location:', error));
             }
@@ -68,8 +75,8 @@
             // ページ読み込み時に位置情報を取得
             getISSLocation();
 
-            // 5秒ごとに位置情報を更新（この部分は動作しない可能性があります）
-            // setInterval(getISSLocation, 5000); 
+            // 5秒ごとに位置情報を更新
+            setInterval(getISSLocation, 5000);
         </script>
 
 </body>
