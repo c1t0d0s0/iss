@@ -593,7 +593,7 @@
                 maxZoom: 19
             }).addTo(map);
 
-            // 2. Day/Night Terminator Shadow Layer (fillOpacity: 0.62 enhances Day/Night contrast)
+            // 2. Day/Night Terminator Shadow Layer (stroke: false removes orange border line)
             try {
                 terminator = L.terminator({
                     fillColor: '#000000',
@@ -673,37 +673,59 @@
             }
         }
 
-        // Generate Continuous Orbit Points (unwrapping longitude across 180° for 100% unbroken Leaflet polylines)
-        function generateContinuousOrbit(startDate, minutesOffsetStart, minutesOffsetEnd, stepMinutes = 0.5) {
-            const points = [];
-            let prevLng = null;
-            let totalLngOffset = 0;
-
+        // Generate Anchored Orbit Points (unwrapping forward & backward relative to current ISS position)
+        function generateAnchoredOrbit(startDate, minutesOffsetStart, minutesOffsetEnd, stepMinutes = 0.5) {
+            const rawPoints = [];
             for (let m = minutesOffsetStart; m <= minutesOffsetEnd; m += stepMinutes) {
                 const d = new Date(startDate.getTime() + m * 60000);
                 const state = getISSStateAt(d);
                 if (!state) continue;
-
-                let lng = state.lng;
-                if (prevLng !== null) {
-                    let diff = lng - prevLng;
-                    if (diff > 180) {
-                        totalLngOffset -= 360;
-                    } else if (diff < -180) {
-                        totalLngOffset += 360;
-                    }
-                }
-                prevLng = lng;
-                const contLng = lng + totalLngOffset;
-                points.push([state.lat, contLng]);
+                rawPoints.push({ m, lat: state.lat, lng: state.lng });
             }
-            return points;
+
+            if (rawPoints.length === 0) return [];
+
+            // Find index closest to m = 0
+            let anchorIdx = 0;
+            let minDist = Infinity;
+            for (let i = 0; i < rawPoints.length; i++) {
+                const dist = Math.abs(rawPoints[i].m);
+                if (dist < minDist) {
+                    minDist = dist;
+                    anchorIdx = i;
+                }
+            }
+
+            const res = new Array(rawPoints.length);
+            res[anchorIdx] = [rawPoints[anchorIdx].lat, rawPoints[anchorIdx].lng];
+
+            // Unwrap forward from anchor point
+            for (let i = anchorIdx + 1; i < rawPoints.length; i++) {
+                const prevLng = res[i - 1][1];
+                let lng = rawPoints[i].lng;
+                let diff = lng - prevLng;
+                while (diff > 180) { lng -= 360; diff -= 360; }
+                while (diff < -180) { lng += 360; diff += 360; }
+                res[i] = [rawPoints[i].lat, lng];
+            }
+
+            // Unwrap backward from anchor point
+            for (let i = anchorIdx - 1; i >= 0; i--) {
+                const nextLng = res[i + 1][1];
+                let lng = rawPoints[i].lng;
+                let diff = lng - nextLng;
+                while (diff > 180) { lng -= 360; diff -= 360; }
+                while (diff < -180) { lng += 360; diff += 360; }
+                res[i] = [rawPoints[i].lat, lng];
+            }
+
+            return res;
         }
 
         // Render Single Unbroken Orbit Lines & Time Badges
         function renderOrbitLines(now) {
-            const pastPoints = generateContinuousOrbit(now, -60, 0, 0.5);
-            const futurePoints = generateContinuousOrbit(now, 0, 60, 0.5);
+            const pastPoints = generateAnchoredOrbit(now, -60, 0, 0.5);
+            const futurePoints = generateAnchoredOrbit(now, 0, 60, 0.5);
 
             pastPolylineGlow.setLatLngs(pastPoints);
             pastPolylineCore.setLatLngs(pastPoints);
@@ -764,7 +786,7 @@
                 // Update Popup Content safely without throwing Uncaught TypeError when popup is closed
                 const popupHTML = `
                     <b>緯度:</b> ${lat.toFixed(4)}°<br>
-                    <b>経度:</b> ${lng.toFixed(4)}°<br>
+                    <b>経度:</b> ${lat.toFixed(4)}°<br>
                     <b>高度:</b> ${Math.round(alt)} km<br>
                     <b>時速:</b> ${Math.round(speedKmH).toLocaleString()} km/h<br>
                     <b>計算時刻:</b> ${now.toLocaleTimeString('ja-JP')}
