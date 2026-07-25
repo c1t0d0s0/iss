@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ISSの現在位置</title>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #mapid {
+            height: 100vh;
+            }
+    </style>
+    <script src="config.js" onerror="this.remove()"></script>
+    <script>
+      if (typeof GTM_ID !== 'undefined') {
+        const gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`;
+        document.head.appendChild(gtmScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GTM_ID);
+      }
+    </script>
+</head>
+<body>
+
+    <div style="padding: 10px; background-color: #f0f0f0;">
+        <input type="datetime-local" id="datetime-input">
+        <button onclick="getISSLocationForTimestamp()">指定した日時のISS位置を取得</button>
+        <div id="result"></div>
+    </div>
+    <div id="mapid"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 地図の初期化
+        var mymap = L.map('mapid').setView([0, 0], 3);
+
+        // OpenStreetMapのタイルレイヤーを追加
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);
+
+        // ISSの現在位置マーカーを作成
+        var issMarker = L.marker([0, 0]).addTo(mymap);
+        issMarker.bindPopup("<b>ISSの現在位置</b><br>経度: <span id='current_longitude'></span><br>緯度: <span id='current_latitude'></span>").openPopup();
+
+        // 指定した日時のISSの位置マーカーを作成
+        var historicalMarker = L.marker([0, 0]);
+        historicalMarker.bindPopup("<b>指定した日時のISS位置</b>");
+
+        // ISSの現在位置情報を取得して地図を更新する関数
+        function getISSLocation() {
+            fetch('https://api.wheretheiss.at/v1/satellites/25544')
+                .then(response => response.json())
+                .then(data => {
+                    var lat = data.latitude;
+                    var lon = data.longitude;
+
+                    // マーカーの位置を更新
+                    issMarker.setLatLng([lat, lon]);
+                    
+                    // ポップアップの内容を更新
+                    document.getElementById('current_longitude').textContent = lon.toFixed(2);
+                    document.getElementById('current_latitude').textContent = lat.toFixed(2);
+
+                    // 地図の中心を更新
+                    mymap.panTo([lat, lon]);
+                })
+                .catch(error => console.error('Error fetching ISS location:', error));
+        }
+
+        // 指定した日時のISSの位置情報を取得して地図を更新する関数
+        function getISSLocationForTimestamp() {
+            var datetimeInput = document.getElementById('datetime-input').value;
+            if (!datetimeInput) {
+                alert('日時を入力してください。');
+                return;
+            }
+            var timestamp = Math.floor(new Date(datetimeInput).getTime() / 1000);
+
+            fetch(`https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps=${timestamp}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.length > 0) {
+                        var lat = data[0].latitude;
+                        var lon = data[0].longitude;
+
+                        // マーカーを地図に追加
+                        if (!mymap.hasLayer(historicalMarker)) {
+                            historicalMarker.addTo(mymap);
+                        }
+                        
+                        // マーカーの位置を更新
+                        historicalMarker.setLatLng([lat, lon]);
+
+                        // ポップアップの内容を更新
+                        historicalMarker.setPopupContent(`<b>指定した日時のISS位置</b><br>経度: ${lon.toFixed(2)}<br>緯度: ${lat.toFixed(2)}`);
+                        historicalMarker.openPopup();
+
+                        // 結果表示エリアを更新
+                        document.getElementById('result').innerHTML = `<b>指定した日時 (${datetimeInput}) のISSの位置:</b><br>緯度: ${lat.toFixed(4)}, 経度: ${lon.toFixed(4)}`;
+                    } else {
+                        alert('指定した日時の位置情報を取得できませんでした。');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching historical ISS location:', error);
+                    alert('エラーが発生しました。');
+                });
+        }
+
+        // ページ読み込み時に現在位置を取得
+        getISSLocation();
+    </script>
+
+</body>
+</html>
