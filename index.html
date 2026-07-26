@@ -568,12 +568,12 @@
             return { lat, lng, alt, speedKmH };
         }
 
-        // Initialize Map directly centered on ISS location
+        // Initialize Map directly centered on Equator (0°) and ISS longitude
         function initMap() {
-            let initialCenter = [20, 0];
+            let initialCenter = [0, 0];
             const st = getISSStateAt(new Date());
             if (st) {
-                initialCenter = [st.lat, st.lng];
+                initialCenter = [0, st.lng];
             }
 
             map = L.map('map', {
@@ -786,7 +786,7 @@
                 // Update Popup Content safely without throwing Uncaught TypeError when popup is closed
                 const popupHTML = `
                     <b>緯度:</b> ${lat.toFixed(4)}°<br>
-                    <b>経度:</b> ${lat.toFixed(4)}°<br>
+                    <b>経度:</b> ${lng.toFixed(4)}°<br>
                     <b>高度:</b> ${Math.round(alt)} km<br>
                     <b>時速:</b> ${Math.round(speedKmH).toLocaleString()} km/h<br>
                     <b>計算時刻:</b> ${now.toLocaleTimeString('ja-JP')}
@@ -796,8 +796,9 @@
                     popupElem.innerHTML = popupHTML;
                 }
 
+                // Recenter map with Latitude fixed at Equator (0°), following ISS Longitude
                 if (isAutoRecenter && map) {
-                    map.panTo(latLng);
+                    map.panTo([0, lng]);
                 }
 
                 // Render Orbit Lines
@@ -853,12 +854,12 @@
                 updateSimulation();
             });
 
-            // Toggle Auto-Recenter
+            // Toggle Auto-Recenter (Latitude fixed at Equator 0°, Longitude following ISS)
             btnRecenter.addEventListener('click', () => {
                 isAutoRecenter = !isAutoRecenter;
                 if (isAutoRecenter) {
                     btnRecenter.classList.add('btn-active');
-                    if (issMarker) map.panTo(issMarker.getLatLng());
+                    if (issMarker) map.panTo([0, issMarker.getLatLng().lng]);
                 } else {
                     btnRecenter.classList.remove('btn-active');
                 }
