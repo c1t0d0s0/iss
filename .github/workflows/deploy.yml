@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare site
+        env:
+          GTM_ID: ${{ vars.GTM_ID }}
+        run: |
+          mkdir -p _site
+          cp index.html style.css script.js _site/
+          if [ -n "$GTM_ID" ]; then
+            printf 'const GTM_ID = "%s";\n' "$GTM_ID" > _site/config.js
+            echo "GTM_ID repository variable found — embedding Google tag."
+          else
+            echo "No GTM_ID repository variable set — skipping Google tag."
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
