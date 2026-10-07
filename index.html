@@ -43,7 +43,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
-            ISS TRACKER
+            <span id="header-title">ISS & ORBIT TRACKER</span>
         </div>
         <div class="live-badge" id="live-indicator">
             <span class="live-dot"></span> LIVE
@@ -57,6 +57,21 @@
 
     <!-- Dashboard Overlay -->
     <div class="hud-dashboard" id="dashboard">
+        <!-- Satellite Selector Section -->
+        <div class="sat-selector-section">
+            <div class="sat-selector-header">
+                <span class="sat-selector-title" id="sat-selector-title">衛星選択 / 表示切替</span>
+                <span class="sat-selector-hint" id="sat-selector-hint">行をクリックで追跡</span>
+            </div>
+            <div class="sat-list" id="sat-list"></div>
+        </div>
+
+        <!-- Telemetry Panel Title / Active Target Indicator -->
+        <div class="telemetry-header">
+            <span class="telemetry-target-label" id="telemetry-target-label">追跡中:</span>
+            <span class="telemetry-target-name" id="telemetry-target-name">国際宇宙ステーション (ISS)</span>
+        </div>
+
         <div class="telemetry-grid">
             <div class="telemetry-card">
                 <div class="card-label" id="label-lat">緯度 (LAT)</div>
@@ -100,15 +115,15 @@
     <div class="hud-legend">
         <div class="legend-item">
             <div class="legend-color" style="background: #00ffff; box-shadow: 0 0 10px #00ffff;"></div>
-            <span id="legend-future">未来1時間の予測軌道 (水色)</span>
+            <span id="legend-future">未来1時間の予測軌道 (実線)</span>
         </div>
         <div class="legend-item">
             <div class="legend-color" style="background: #ff007f; box-shadow: 0 0 10px #ff007f;"></div>
-            <span id="legend-past">過去1時間の飛行軌跡 (ピンク破線)</span>
+            <span id="legend-past">過去1時間の飛行軌跡 (破線)</span>
         </div>
         <div class="legend-item">
             <div class="legend-color" style="background: rgba(0, 243, 255, 0.2); border: 1px solid var(--accent-cyan); height: 8px; border-radius: 4px;"></div>
-            <span id="legend-footprint">ISSの可視領域 (Footprint)</span>
+            <span id="legend-footprint">地上可視領域 (Footprint)</span>
         </div>
     </div>
 

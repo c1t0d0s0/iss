@@ -108,6 +108,159 @@ body, html {
     transition: all 0.3s ease;
 }
 
+/* Satellite Selector Section */
+.sat-selector-section {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sat-selector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.sat-selector-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.sat-selector-hint {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    opacity: 0.8;
+}
+
+.sat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.sat-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.sat-item.active {
+    border-color: var(--sat-color, var(--accent-cyan));
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
+}
+
+.sat-item-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.sat-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.sat-checkbox {
+    cursor: pointer;
+    accent-color: var(--sat-color, var(--accent-cyan));
+    width: 15px;
+    height: 15px;
+}
+
+.sat-color-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px currentColor;
+}
+
+.sat-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sat-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sat-sub {
+    font-size: 0.62rem;
+    color: var(--text-dim);
+    font-family: 'Orbitron', monospace;
+}
+
+.sat-badge {
+    font-size: 0.62rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: none;
+}
+
+.sat-item.active .sat-badge {
+    display: inline-block;
+    background: var(--sat-color, var(--accent-cyan));
+    color: #0b0e14;
+    box-shadow: 0 0 8px var(--sat-color, var(--accent-cyan));
+}
+
+/* Telemetry Header */
+.telemetry-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+}
+
+.telemetry-target-label {
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.telemetry-target-name {
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .telemetry-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -351,9 +504,25 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     background: var(--panel-bg) !important;
 }
 
-.iss-icon-glow {
-    filter: drop-shadow(0 0 12px #00ffff);
+.iss-icon-glow,
+.sat-icon-glow {
     transition: transform 0.5s linear;
+}
+
+.sat-glow-25544 {
+    filter: drop-shadow(0 0 12px #00ffff);
+}
+
+.sat-glow-48274 {
+    filter: drop-shadow(0 0 12px #f59e0b);
+}
+
+.sat-glow-53807 {
+    filter: drop-shadow(0 0 12px #c084fc);
+}
+
+.sat-glow-27386 {
+    filter: drop-shadow(0 0 12px #10b981);
 }
 
 .orbit-marker-badge {

@@ -6,15 +6,23 @@ A single-page web app that tracks the International Space Station (ISS) in real 
 
 ## Features
 
-- **Real-time ISS position** — latitude, longitude, altitude, and ground speed, updated every second using orbital propagation (SGP4).
+- **Multi-satellite real-time tracking & orbit display** — Tracks the International Space Station (ISS) by default, and allows users to display and track additional satellites:
+  - **International Space Station (ISS)** (NORAD ID: 25544)
+  - **Tiangong Space Station (CSS)** (NORAD ID: 48274)
+  - **BlueWalker 3** (NORAD ID: 53807) — ultra-bright communications satellite with a 64 m² antenna array
+  - **Envisat** (NORAD ID: 27386) — massive polar-orbiting Earth observation satellite
+- **Interactive Satellite Selector**:
+  - Independent visibility checkboxes for each satellite (enables simultaneous multi-satellite display and orbit comparison).
+  - Click any row or map marker to make that satellite the active tracking target (updates HUD telemetry and map auto-centering).
+- **Orbit trails** — Draws the past 1 hour (flown, dashed) and next 1 hour (predicted, solid) ground tracks in each satellite's theme color, with time badges at +15m / +30m / +45m / +60m.
+- **Dynamic visibility footprint** — Calculates and renders ground horizon visibility radius based on orbital altitude.
 - **Day/night terminator overlay** — shows which parts of the Earth are currently in daylight or darkness.
-- **Orbit trail** — draws the past 1 hour (flown) and next 1 hour (predicted) of the ISS ground track, with time markers at +15/+30/+45/+60 minutes.
-- **Time-jump simulation** — pick any date/time to see where the ISS was or will be, then jump back to live tracking.
+- **Time-jump simulation** — pick any date/time to see where all visible satellites were or will be, then jump back to live tracking.
 - **Auto language switching** — the UI displays in Japanese when the browser's language is Japanese, and in English otherwise.
 - **Responsive design**:
-  - Desktop: the map pans to keep the ISS's longitude centered, latitude locked to the equator.
-  - Mobile: the dashboard panel starts collapsed, and the map centers directly on the ISS (both latitude and longitude).
-- **Live TLE data** — fetches the latest orbital elements from [CelesTrak](https://celestrak.org/), with a built-in fallback dataset if the request fails or times out.
+  - Desktop: the map pans to keep the active satellite's longitude centered, latitude locked to the equator.
+  - Mobile: the dashboard panel starts collapsed, and the map centers directly on the active satellite (both latitude and longitude).
+- **Live TLE data** — fetches the latest orbital elements in parallel from [CelesTrak](https://celestrak.org/), with built-in instant fallback datasets for all 4 satellites.
 
 ## Tech Stack
 
