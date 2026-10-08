@@ -291,6 +291,239 @@ const SATELLITE_CONFIGS = {
                 <circle cx="32" cy="32" r="2.5" fill="#ffffff"/>
             </svg>
         `
+    },
+    // Soviet Zenit-2 Rocket Second Stage (SL-16 R/B) Debris Group
+    '19650': {
+        id: '19650',
+        noradId: 19650,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 1980 残骸)', en: 'SL-16 R/B (#19650 Cosmos 1980)' },
+        shortName: 'SL-16 #19650',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 19650U 88102B   26280.45473211  .00000155  00000+0  10253-3 0  9999",
+            line2: "2 19650  70.9987  65.9105 0012706  41.4142 318.7942 14.16173741956875"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '25407': {
+        id: '25407',
+        noradId: 25407,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2360 残骸)', en: 'SL-16 R/B (#25407 Cosmos 2360)' },
+        shortName: 'SL-16 #25407',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 25407U 98045B   26280.47045178  .00000100  00000+0  74355-4 0  9996",
+            line2: "2 25407  71.0086  96.1938 0005621  51.7771 308.3857 14.16212145457085"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '23405': {
+        id: '23405',
+        noradId: 23405,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2297 残骸)', en: 'SL-16 R/B (#23405 Cosmos 2297)' },
+        shortName: 'SL-16 #23405',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 23405U 94077B   26280.40503933 -.00000196  00000+0 -75884-4 0  9999",
+            line2: "2 23405  70.9813 267.0677 0004225 237.5342 122.5372 14.15584961646190"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '24298': {
+        id: '24298',
+        noradId: 24298,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2333 残骸)', en: 'SL-16 R/B (#24298 Cosmos 2333)' },
+        shortName: 'SL-16 #24298',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 24298U 96051B   26280.49133069  .00000055  00000+0  56550-4 0  9993",
+            line2: "2 24298  70.7668  87.0059 0017724 193.1162 166.9499 14.12486978551559"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '20625': {
+        id: '20625',
+        noradId: 20625,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2082 残骸)', en: 'SL-16 R/B (#20625 Cosmos 2082)' },
+        shortName: 'SL-16 #20625',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 20625U 90046B   26280.20543802  .00000220  00000+0  13796-3 0  9998",
+            line2: "2 20625  70.9995 213.6786 0015066 334.8831  25.1557 14.15037954878318"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '22566': {
+        id: '22566',
+        noradId: 22566,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2237 残骸)', en: 'SL-16 R/B (#22566 Cosmos 2237)' },
+        shortName: 'SL-16 #22566',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 22566U 93016B   26280.03301126 -.00000063  00000+0 -80017-5 0  9995",
+            line2: "2 22566  71.0062 131.2955 0010652 348.5723  11.5156 14.15323992732078"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '23088': {
+        id: '23088',
+        noradId: 23088,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2278 残骸)', en: 'SL-16 R/B (#23088 Cosmos 2278)' },
+        shortName: 'SL-16 #23088',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 23088U 94023B   26280.43526478  .00000299  00000+0  17897-3 0  9990",
+            line2: "2 23088  71.0021 346.1970 0004663 310.1726  49.8988 14.15033451676049"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '23705': {
+        id: '23705',
+        noradId: 23705,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2322 残骸)', en: 'SL-16 R/B (#23705 Cosmos 2322)' },
+        shortName: 'SL-16 #23705',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 23705U 95058B   26280.49285459 -.00000251  00000+0 -10374-3 0  9995",
+            line2: "2 23705  71.0192  95.5677 0011716 167.1600 192.9824 14.15518678597827"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    },
+    '31793': {
+        id: '31793',
+        noradId: 31793,
+        groupId: 'sl16_rb',
+        name: { ja: 'SL-16 R/B (Cosmos 2428 残骸)', en: 'SL-16 R/B (#31793 Cosmos 2428)' },
+        shortName: 'SL-16 #31793',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        glowClass: 'sat-glow-sl16',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 31793U 07029B   26280.52086557  .00000317  00000+0  18876-3 0  9990",
+            line2: "2 31793  70.9732  87.0862 0001911 278.8663 138.1629 14.14862671995335"
+        },
+        iconSvg: `
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(255, 59, 48, 0.22)" stroke="#ff3b30" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="27" y="16" width="10" height="28" rx="2" fill="#ffffff" stroke="#ff3b30" stroke-width="1.5"/>
+                <path d="M27 23H37M27 30H37M27 37H37" stroke="#ff3b30" stroke-width="0.8"/>
+                <path d="M29 44L26 50H38L35 44Z" fill="#ff3b30" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="30" r="2.5" fill="#ff3b30"/>
+            </svg>
+        `
+    }
+};
+
+// Satellite Group Definitions (Allows batch toggling in the UI)
+const SATELLITE_GROUPS = {
+    'sl16_rb': {
+        id: 'sl16_rb',
+        name: {
+            ja: 'SL-16 R/B (Zenit残骸 9機)',
+            en: 'SL-16 R/B (Zenit Debris 9 bodies)'
+        },
+        shortName: 'SL-16 R/B Group',
+        color: '#ff3b30',
+        pastColor: '#ff9500',
+        noradIds: [19650, 25407, 23405, 24298, 20625, 22566, 23088, 23705, 31793],
+        primaryId: '19650'
     }
 };
 
@@ -639,14 +872,17 @@ function initMap() {
     }
 }
 
-// Build and Render Satellite Selector in Dashboard
+// Build and Render Satellite Selector in Dashboard (Supports single satellites & debris groups)
 function renderSatelliteSelector() {
     const listContainer = document.getElementById('sat-list');
     if (!listContainer) return;
     listContainer.innerHTML = '';
 
+    // 1. Render Individual Satellites (not part of any group)
     for (const key of Object.keys(SATELLITE_CONFIGS)) {
         const sat = SATELLITE_CONFIGS[key];
+        if (sat.groupId) continue; // Skip grouped satellites here
+
         const isActive = (sat.id === activeSatelliteId);
 
         const item = document.createElement('div');
@@ -689,10 +925,71 @@ function renderSatelliteSelector() {
 
         listContainer.appendChild(item);
     }
+
+    // 2. Render Groups (e.g., SL-16 R/B Debris Group)
+    for (const grpKey of Object.keys(SATELLITE_GROUPS)) {
+        const group = SATELLITE_GROUPS[grpKey];
+        const groupSats = group.noradIds.map(id => SATELLITE_CONFIGS[String(id)]).filter(Boolean);
+        const isAnyEnabled = groupSats.some(s => s.enabled);
+        const isGroupActive = groupSats.some(s => s.id === activeSatelliteId);
+
+        const groupItem = document.createElement('div');
+        groupItem.className = `sat-item ${isGroupActive ? 'active' : ''}`;
+        groupItem.style.setProperty('--sat-color', group.color);
+        groupItem.dataset.groupId = group.id;
+
+        const groupLabel = isJapanese ? group.name.ja : group.name.en;
+        const tagText = isJapanese ? `${group.noradIds.length}機` : `${group.noradIds.length} obj`;
+
+        groupItem.innerHTML = `
+            <div class="sat-item-left">
+                <label class="sat-checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" class="sat-checkbox group-checkbox" data-group-id="${group.id}" ${isAnyEnabled ? 'checked' : ''}>
+                </label>
+                <div class="sat-color-dot" style="background:${group.color}; color:${group.color};"></div>
+                <div class="sat-meta">
+                    <div class="sat-name">${groupLabel} <span class="sat-group-tag">${tagText}</span></div>
+                    <div class="sat-sub">NORAD #${group.noradIds[0]} ~ #${group.noradIds[group.noradIds.length - 1]}</div>
+                </div>
+            </div>
+            <div class="sat-badge">${L10N.activeBadge}</div>
+        `;
+
+        // Group row click: batch-enables group if disabled, and focuses primary debris
+        groupItem.addEventListener('click', () => {
+            const checkbox = groupItem.querySelector('.group-checkbox');
+            if (!groupSats.some(s => s.enabled)) {
+                if (checkbox) checkbox.checked = true;
+                toggleSatelliteGroupVisibility(group.id, true);
+            }
+            setActiveSatellite(group.primaryId);
+        });
+
+        // Group checkbox change: batch toggles all satellites in group
+        const groupCheckbox = groupItem.querySelector('.group-checkbox');
+        groupCheckbox.addEventListener('change', (e) => {
+            e.stopPropagation();
+            const checked = e.target.checked;
+            toggleSatelliteGroupVisibility(group.id, checked);
+        });
+
+        listContainer.appendChild(groupItem);
+    }
 }
 
-// Toggle Visibility of Satellite on Map
-function toggleSatelliteVisibility(satId, isVisible) {
+// Toggle Visibility of an entire Satellite Group (e.g. SL-16 Debris)
+function toggleSatelliteGroupVisibility(groupId, isVisible) {
+    const group = SATELLITE_GROUPS[groupId];
+    if (!group) return;
+
+    for (const noradId of group.noradIds) {
+        toggleSatelliteVisibility(String(noradId), isVisible, false);
+    }
+    updateSimulation();
+}
+
+// Toggle Visibility of a Single Satellite on Map
+function toggleSatelliteVisibility(satId, isVisible, shouldUpdateSim = true) {
     const sat = SATELLITE_CONFIGS[satId];
     if (!sat || !map) return;
     sat.enabled = isVisible;
@@ -718,17 +1015,22 @@ function toggleSatelliteVisibility(satId, isVisible) {
         sat.timeBadgeMarkers = [];
     }
 
-    updateSimulation();
+    if (shouldUpdateSim) {
+        updateSimulation();
+    }
 }
 
 // Switch Active Satellite Target
 function setActiveSatellite(satId) {
     if (!SATELLITE_CONFIGS[satId]) return;
     activeSatelliteId = satId;
+    const targetSat = SATELLITE_CONFIGS[satId];
 
-    // Update active class on list items
+    // Update active class on list items (matches either individual satellite or group)
     document.querySelectorAll('.sat-item').forEach(item => {
         if (item.dataset.satId === satId) {
+            item.classList.add('active');
+        } else if (item.dataset.groupId && targetSat.groupId === item.dataset.groupId) {
             item.classList.add('active');
         } else {
             item.classList.remove('active');
@@ -740,9 +1042,8 @@ function setActiveSatellite(satId) {
 
     // Auto-recenter to newly active satellite if enabled
     if (isAutoRecenter && map) {
-        const sat = SATELLITE_CONFIGS[satId];
         const now = isRealTime ? new Date() : targetDate;
-        const st = getSatelliteStateAt(sat, now);
+        const st = getSatelliteStateAt(targetSat, now);
         if (st) {
             map.panTo(isMobileView() ? [st.lat, st.lng] : [0, st.lng]);
         }

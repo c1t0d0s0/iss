@@ -6,7 +6,7 @@ A single-page web app that tracks the International Space Station (ISS) in real 
 
 ## Features
 
-- **Multi-satellite real-time tracking & orbit display** — Tracks the International Space Station (ISS) by default, and allows users to display and track up to 8 satellites:
+- **Multi-satellite & Space Debris tracking** — Tracks the International Space Station (ISS) by default, and allows users to display and track up to 8 science satellites and space debris constellations:
   - **International Space Station (ISS)** (NORAD ID: 25544)
   - **Tiangong Space Station (CSS)** (NORAD ID: 48274)
   - **Hubble Space Telescope (HST)** (NORAD ID: 20580) — humanity's premier optical space observatory
@@ -15,9 +15,10 @@ A single-page web app that tracks the International Space Station (ISS) in real 
   - **Landsat 9** (NORAD ID: 49260) — sister satellite trailing Landsat 8 in the same orbital plane with an 8-day phase offset
   - **BlueWalker 3** (NORAD ID: 53807) — ultra-bright communications satellite with a 64 m² antenna array
   - **Envisat** (NORAD ID: 27386) — massive polar-orbiting Earth observation satellite
-- **Interactive Satellite Selector**:
-  - Independent visibility checkboxes for each satellite (enables simultaneous multi-satellite display and orbit comparison).
-  - Click any row or map marker to make that satellite the active tracking target (updates HUD telemetry and map auto-centering).
+  - **SL-16 R/B (Soviet Zenit Rocket Body Debris, 9 bodies)** — Massive rocket stages in ~840 km orbit (NORAD IDs: 19650, 25407, 23405, 24298, 20625, 22566, 23088, 23705, 31793), batch-toggleable with a single checkbox.
+- **Interactive Satellite Selector (Individual & Group Toggling)**:
+  - Independent visibility checkboxes for satellites and debris groups (batch-toggles all 9 Zenit debris bodies simultaneously).
+  - Click any row or map marker to make that satellite or debris body the active tracking target (updates HUD telemetry, TLE epoch, and map auto-centering).
 - **Orbit trails** — Draws the past 1 hour (flown, dashed) and next 1 hour (predicted, solid) ground tracks in each satellite's theme color, with time badges at +15m / +30m / +45m / +60m.
 - **Dynamic visibility footprint** — Calculates and renders ground horizon visibility radius based on orbital altitude.
 - **Day/night terminator overlay** — shows which parts of the Earth are currently in daylight or darkness.
