@@ -61,7 +61,10 @@
         <div class="sat-selector-section">
             <div class="sat-selector-header">
                 <span class="sat-selector-title" id="sat-selector-title">衛星選択 / 表示切替</span>
-                <span class="sat-selector-hint" id="sat-selector-hint">行をクリックで追跡</span>
+                <button class="btn-tle-refresh" id="btn-tle-refresh" title="全衛星のTLEデータを最新化">
+                    <span class="refresh-icon" id="tle-refresh-icon">🔄</span>
+                    <span id="tle-refresh-btn-text">TLE更新</span>
+                </button>
             </div>
             <div class="sat-list" id="sat-list"></div>
         </div>
@@ -88,6 +91,18 @@
             <div class="telemetry-card">
                 <div class="card-label" id="label-vel">速度 (VEL)</div>
                 <div class="card-value" id="val-speed">--- <span class="card-unit">km/h</span></div>
+            </div>
+        </div>
+
+        <!-- TLE Epoch & Status Info Bar -->
+        <div class="tle-info-bar">
+            <div class="tle-info-item">
+                <span class="tle-info-label" id="label-tle-epoch">TLE元期:</span>
+                <span class="tle-info-val" id="val-tle-epoch">----/--/-- --:--</span>
+            </div>
+            <div class="tle-info-status" id="tle-fetch-status">
+                <span class="status-dot"></span>
+                <span id="tle-status-text">最新確認済</span>
             </div>
         </div>
 

@@ -25,10 +25,16 @@ const I18N = {
         popupAlt: '高度:',
         popupSpeed: '時速:',
         popupTime: '計算時刻:',
+        popupTleEpoch: 'TLE元期:',
         satSelectorTitle: '衛星選択 / 表示切替',
         satSelectorHint: 'クリックで追跡',
         telemetryTargetLabel: '追跡中:',
         activeBadge: '追跡中',
+        btnTleRefresh: 'TLE更新',
+        labelTleEpoch: 'TLE元期:',
+        tleStatusSuccess: '最新確認済',
+        tleStatusUpdating: '更新中...',
+        tleStatusError: '取得失敗 (キャッシュ使用)',
         minuteSuffix: '分',
         locale: 'ja-JP'
     },
@@ -53,10 +59,16 @@ const I18N = {
         popupAlt: 'Altitude:',
         popupSpeed: 'Speed:',
         popupTime: 'Calculated at:',
+        popupTleEpoch: 'TLE Epoch:',
         satSelectorTitle: 'Satellite Selection / Display',
         satSelectorHint: 'Click row to track',
         telemetryTargetLabel: 'TRACKING:',
         activeBadge: 'TRACKING',
+        btnTleRefresh: 'Update TLE',
+        labelTleEpoch: 'TLE EPOCH:',
+        tleStatusSuccess: 'Up to date',
+        tleStatusUpdating: 'Updating...',
+        tleStatusError: 'Failed (using cache)',
         minuteSuffix: 'm',
         locale: 'en-US'
     }
@@ -171,8 +183,167 @@ const SATELLITE_CONFIGS = {
                 <circle cx="32" cy="32" r="3.5" fill="#ffffff"/>
             </svg>
         `
+    },
+    '20580': {
+        id: '20580',
+        noradId: 20580,
+        name: {
+            ja: 'ハッブル宇宙望遠鏡 (HST)',
+            en: 'Hubble Space Telescope (HST)'
+        },
+        shortName: 'Hubble (HST)',
+        color: '#38bdf8',
+        pastColor: '#0284c7',
+        glowClass: 'sat-glow-20580',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 20580U 90037B   26280.56374465  .00004531  00000+0  13576-3 0  9999",
+            line2: "2 20580  28.4733  31.8546 0001508 335.5663  24.4861 15.31851452805818"
+        },
+        iconSvg: `
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(56, 189, 248, 0.22)" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 2"/>
+                <rect x="27" y="16" width="10" height="32" rx="3" fill="#ffffff" stroke="#38bdf8" stroke-width="1.5"/>
+                <path d="M27 16L22 10" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+                <rect x="10" y="26" width="14" height="12" rx="1" fill="#38bdf8" stroke="#ffffff" stroke-width="1"/>
+                <rect x="40" y="26" width="14" height="12" rx="1" fill="#38bdf8" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="32" r="3" fill="#ffffff"/>
+            </svg>
+        `
+    },
+    '25994': {
+        id: '25994',
+        noradId: 25994,
+        name: {
+            ja: 'Terra (EOS AM-1)',
+            en: 'Terra (EOS AM-1)'
+        },
+        shortName: 'Terra',
+        color: '#84cc16',
+        pastColor: '#65a30d',
+        glowClass: 'sat-glow-25994',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 25994U 99068A   26280.61696211  .00000188  00000+0  47189-4 0  9990",
+            line2: "2 25994  97.9331 325.6368 0001437 199.5368 312.2094 14.61171007426025"
+        },
+        iconSvg: `
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(132, 204, 22, 0.22)" stroke="#84cc16" stroke-width="2" stroke-dasharray="4 2"/>
+                <rect x="25" y="20" width="14" height="24" rx="2" fill="#ffffff" stroke="#84cc16" stroke-width="1.5"/>
+                <rect x="8" y="24" width="14" height="16" rx="1" fill="#84cc16" stroke="#ffffff" stroke-width="1"/>
+                <path d="M12 24V40M16 24V40" stroke="#ffffff" stroke-width="0.8"/>
+                <rect x="42" y="28" width="6" height="8" rx="1" fill="#84cc16" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="32" r="3" fill="#ffffff"/>
+            </svg>
+        `
+    },
+    '39084': {
+        id: '39084',
+        noradId: 39084,
+        name: {
+            ja: 'Landsat 8',
+            en: 'Landsat 8'
+        },
+        shortName: 'Landsat 8',
+        color: '#fb7185',
+        pastColor: '#e11d48',
+        glowClass: 'sat-glow-39084',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 39084U 13008A   26280.57467548  .00000158  00000+0  45045-4 0  9995",
+            line2: "2 39084  98.2193 349.3079 0001305  94.7849 265.3499 14.57109285714263"
+        },
+        iconSvg: `
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(251, 113, 133, 0.22)" stroke="#fb7185" stroke-width="2" stroke-dasharray="4 2"/>
+                <rect x="26" y="22" width="12" height="20" rx="2" fill="#ffffff" stroke="#fb7185" stroke-width="1.5"/>
+                <rect x="41" y="24" width="15" height="16" rx="1" fill="#fb7185" stroke="#ffffff" stroke-width="1"/>
+                <path d="M46 24V40M51 24V40" stroke="#ffffff" stroke-width="0.8"/>
+                <circle cx="21" cy="32" r="4" fill="#fb7185" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="32" r="2.5" fill="#ffffff"/>
+            </svg>
+        `
+    },
+    '49260': {
+        id: '49260',
+        noradId: 49260,
+        name: {
+            ja: 'Landsat 9',
+            en: 'Landsat 9'
+        },
+        shortName: 'Landsat 9',
+        color: '#e879f9',
+        pastColor: '#c026d3',
+        glowClass: 'sat-glow-49260',
+        enabled: false,
+        fallbackTle: {
+            line1: "1 49260U 21088A   26280.19705414  .00000193  00000+0  52816-4 0  9997",
+            line2: "2 49260  98.2173 348.9525 0001402  88.6281 271.5079 14.57107910267314"
+        },
+        iconSvg: `
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" fill="rgba(232, 121, 249, 0.22)" stroke="#e879f9" stroke-width="2" stroke-dasharray="4 2"/>
+                <rect x="26" y="22" width="12" height="20" rx="2" fill="#ffffff" stroke="#e879f9" stroke-width="1.5"/>
+                <rect x="41" y="24" width="15" height="16" rx="1" fill="#e879f9" stroke="#ffffff" stroke-width="1"/>
+                <path d="M46 24V40M51 24V40" stroke="#ffffff" stroke-width="0.8"/>
+                <circle cx="21" cy="32" r="4" fill="#e879f9" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="32" cy="32" r="2.5" fill="#ffffff"/>
+            </svg>
+        `
     }
 };
+
+// TLE Cache & Epoch Parsing Helpers
+const TLE_CACHE_KEY = 'SATELLITE_TLE_CACHE_V2';
+
+function parseTLEEpoch(line1) {
+    if (!line1 || line1.length < 32) return null;
+    const yearStr = line1.substring(18, 20).trim();
+    const dayStr = line1.substring(20, 32).trim();
+    let year = parseInt(yearStr, 10);
+    year = year < 57 ? 2000 + year : 1900 + year;
+    const day = parseFloat(dayStr);
+    if (isNaN(year) || isNaN(day)) return null;
+
+    const date = new Date(Date.UTC(year, 0, 1));
+    date.setUTCMilliseconds((day - 1) * 86400 * 1000);
+    return date;
+}
+
+function formatEpochDate(date) {
+    if (!date || isNaN(date.getTime())) return '--';
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    const hh = String(date.getHours()).padStart(2, '0');
+    const mm = String(date.getMinutes()).padStart(2, '0');
+    return `${y}/${m}/${d} ${hh}:${mm}`;
+}
+
+function getStoredTLECache() {
+    try {
+        const raw = localStorage.getItem(TLE_CACHE_KEY);
+        return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+function saveTLEToCache(satId, line1, line2, epochDate) {
+    try {
+        const cache = getStoredTLECache();
+        cache[satId] = {
+            line1,
+            line2,
+            epoch: epochDate ? epochDate.toISOString() : null,
+            fetchedAt: Date.now()
+        };
+        localStorage.setItem(TLE_CACHE_KEY, JSON.stringify(cache));
+    } catch (e) {
+        console.warn('LocalStorage save error:', e);
+    }
+}
 
 // Application State
 let map = null;
@@ -183,14 +354,11 @@ let isRealTime = true;
 let isAutoRecenter = true;
 let updateTimer = null;
 
-// Initialize Satellite Runtime Structures
+// Initialize Satellite Runtime Structures with LocalStorage Cache
+const cachedTLEs = getStoredTLECache();
+
 for (const key of Object.keys(SATELLITE_CONFIGS)) {
     const sat = SATELLITE_CONFIGS[key];
-    try {
-        sat.satrec = satellite.twoline2satrec(sat.fallbackTle.line1, sat.fallbackTle.line2);
-    } catch(e) {
-        console.warn(`Initial satrec error for ${sat.shortName}:`, e);
-    }
     sat.marker = null;
     sat.footprintCircle = null;
     sat.pastPolylineGlow = null;
@@ -198,6 +366,34 @@ for (const key of Object.keys(SATELLITE_CONFIGS)) {
     sat.futurePolylineGlow = null;
     sat.futurePolylineCore = null;
     sat.timeBadgeMarkers = [];
+
+    // Use cached TLE if available, otherwise fallback
+    let activeLine1 = sat.fallbackTle.line1;
+    let activeLine2 = sat.fallbackTle.line2;
+    let cachedEpoch = null;
+    let cachedFetchedAt = null;
+
+    if (cachedTLEs[sat.id] && cachedTLEs[sat.id].line1 && cachedTLEs[sat.id].line2) {
+        activeLine1 = cachedTLEs[sat.id].line1;
+        activeLine2 = cachedTLEs[sat.id].line2;
+        if (cachedTLEs[sat.id].epoch) {
+            cachedEpoch = new Date(cachedTLEs[sat.id].epoch);
+        }
+        cachedFetchedAt = cachedTLEs[sat.id].fetchedAt || null;
+    }
+
+    sat.currentTle = {
+        line1: activeLine1,
+        line2: activeLine2,
+        epoch: cachedEpoch || parseTLEEpoch(activeLine1),
+        fetchedAt: cachedFetchedAt
+    };
+
+    try {
+        sat.satrec = satellite.twoline2satrec(activeLine1, activeLine2);
+    } catch(e) {
+        console.warn(`Initial satrec error for ${sat.shortName}:`, e);
+    }
 }
 
 // Mobile Viewport Detection (matches CSS breakpoint)
@@ -231,11 +427,17 @@ function applyStaticTranslations() {
     const satSelectorTitleElem = document.getElementById('sat-selector-title');
     if (satSelectorTitleElem) satSelectorTitleElem.textContent = L10N.satSelectorTitle;
 
-    const satSelectorHintElem = document.getElementById('sat-selector-hint');
-    if (satSelectorHintElem) satSelectorHintElem.textContent = L10N.satSelectorHint;
-
     const targetLabelElem = document.getElementById('telemetry-target-label');
     if (targetLabelElem) targetLabelElem.textContent = L10N.telemetryTargetLabel;
+
+    const tleBtnText = document.getElementById('tle-refresh-btn-text');
+    if (tleBtnText) tleBtnText.textContent = L10N.btnTleRefresh;
+
+    const labelTleEpoch = document.getElementById('label-tle-epoch');
+    if (labelTleEpoch) labelTleEpoch.textContent = L10N.labelTleEpoch;
+
+    const statusText = document.getElementById('tle-status-text');
+    if (statusText) statusText.textContent = L10N.tleStatusSuccess;
 
     updateActiveSatelliteUI();
 }
@@ -562,6 +764,13 @@ function updateActiveSatelliteUI() {
     if (btnRecenter) {
         btnRecenter.textContent = L10N.btnRecenterTemplate.replace('{name}', activeSat.shortName);
     }
+
+    const epochElem = document.getElementById('val-tle-epoch');
+    if (epochElem) {
+        epochElem.textContent = (activeSat.currentTle && activeSat.currentTle.epoch)
+            ? formatEpochDate(activeSat.currentTle.epoch)
+            : '--';
+    }
 }
 
 // Render Satellite Orbit Polylines & Time Badges
@@ -634,15 +843,19 @@ function updateSimulation() {
         sat.footprintCircle.setLatLng(latLng);
         sat.footprintCircle.setRadius(radiusMeters);
 
-        // Update Popup Content
+        // Update Popup Content with TLE Epoch
         const popupElem = document.getElementById(`popup-content-${sat.id}`);
         if (popupElem) {
+            const epochStr = (sat.currentTle && sat.currentTle.epoch)
+                ? formatEpochDate(sat.currentTle.epoch)
+                : '--';
             popupElem.innerHTML = `
                 <b>${L10N.popupLat}</b> ${lat.toFixed(4)}°<br>
                 <b>${L10N.popupLng}</b> ${lng.toFixed(4)}°<br>
                 <b>${L10N.popupAlt}</b> ${Math.round(alt)} km<br>
                 <b>${L10N.popupSpeed}</b> ${Math.round(speedKmH).toLocaleString()} km/h<br>
-                <b>${L10N.popupTime}</b> ${now.toLocaleTimeString(L10N.locale)}
+                <b>${L10N.popupTime}</b> ${now.toLocaleTimeString(L10N.locale)}<br>
+                <b>${L10N.popupTleEpoch}</b> ${epochStr}
             `;
         }
 
@@ -668,6 +881,12 @@ function updateSimulation() {
         terminator.setTime(now);
     }
 }
+
+// TLE Refresh Engine States
+let isRefreshingTLE = false;
+let lastRefreshTimestamp = 0;
+const TLE_COOLDOWN_MS = 5000; // 5s debounce for manual button
+const AUTO_REFRESH_INTERVAL_MS = 30 * 60 * 1000; // 30 minutes
 
 // Fetch Live TLE Data for a Single Satellite with 4s timeout
 async function fetchSatelliteTLE(sat) {
@@ -695,8 +914,16 @@ async function fetchSatelliteTLE(sat) {
         if (l1 && l2) {
             const freshSatrec = satellite.twoline2satrec(l1, l2);
             if (freshSatrec && !freshSatrec.error) {
+                const newEpoch = parseTLEEpoch(l1);
                 sat.satrec = freshSatrec;
-                console.log(`Updated fresh TLE for ${sat.shortName} (#${sat.noradId}).`);
+                sat.currentTle = {
+                    line1: l1,
+                    line2: l2,
+                    epoch: newEpoch,
+                    fetchedAt: Date.now()
+                };
+                saveTLEToCache(sat.id, l1, l2, newEpoch);
+                console.log(`Updated fresh TLE for ${sat.shortName} (#${sat.noradId}). Epoch: ${newEpoch ? newEpoch.toISOString() : 'unknown'}`);
                 return true;
             }
         }
@@ -708,14 +935,48 @@ async function fetchSatelliteTLE(sat) {
     return false;
 }
 
-// Fetch Live TLE Data for all satellites in parallel
-async function loadAllTLEData() {
+// Refresh Live TLE Data for all satellites in parallel (supports manual or auto)
+async function refreshAllTLEs(isManual = false) {
+    if (isRefreshingTLE) return;
+    const now = Date.now();
+    if (isManual && (now - lastRefreshTimestamp < TLE_COOLDOWN_MS)) {
+        return;
+    }
+    isRefreshingTLE = true;
+    lastRefreshTimestamp = now;
+
+    const btnRefresh = document.getElementById('btn-tle-refresh');
+    const refreshIcon = document.getElementById('tle-refresh-icon');
+    const statusContainer = document.getElementById('tle-fetch-status');
+    const statusText = document.getElementById('tle-status-text');
+
+    if (btnRefresh) btnRefresh.disabled = true;
+    if (refreshIcon) refreshIcon.classList.add('spinning');
+    if (statusContainer) statusContainer.className = 'tle-info-status updating';
+    if (statusText) statusText.textContent = L10N.tleStatusUpdating;
+
     const promises = Object.values(SATELLITE_CONFIGS).map(sat => fetchSatelliteTLE(sat));
     const results = await Promise.allSettled(promises);
-    const anyUpdated = results.some(r => r.status === 'fulfilled' && r.value === true);
-    if (anyUpdated) {
-        updateSimulation();
+    const updatedCount = results.filter(r => r.status === 'fulfilled' && r.value === true).length;
+
+    if (refreshIcon) refreshIcon.classList.remove('spinning');
+    if (statusContainer) {
+        statusContainer.className = (updatedCount > 0 || !isManual) ? 'tle-info-status' : 'tle-info-status error';
     }
+
+    const timeStr = new Date().toLocaleTimeString(L10N.locale, { hour: '2-digit', minute: '2-digit' });
+    if (statusText) {
+        statusText.textContent = `${L10N.tleStatusSuccess} (${timeStr})`;
+    }
+
+    updateActiveSatelliteUI();
+    updateSimulation();
+
+    // Re-enable button after cooldown
+    setTimeout(() => {
+        isRefreshingTLE = false;
+        if (btnRefresh) btnRefresh.disabled = false;
+    }, isManual ? TLE_COOLDOWN_MS : 500);
 }
 
 // Setup Event Listeners
@@ -728,6 +989,7 @@ function setupEventListeners() {
     const simStatus = document.getElementById('sim-status');
     const toggleDashboardBtn = document.getElementById('toggle-dashboard-btn');
     const dashboard = document.getElementById('dashboard');
+    const btnTleRefresh = document.getElementById('btn-tle-refresh');
 
     if (isMobileView() && dashboard) {
         dashboard.classList.add('collapsed');
@@ -735,6 +997,13 @@ function setupEventListeners() {
 
     const nowISO = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
     datetimePicker.value = nowISO;
+
+    // Manual TLE Refresh Click
+    if (btnTleRefresh) {
+        btnTleRefresh.addEventListener('click', () => {
+            refreshAllTLEs(true);
+        });
+    }
 
     // Jump to specified datetime
     btnJump.addEventListener('click', () => {
@@ -785,6 +1054,18 @@ function setupEventListeners() {
             dashboard.classList.toggle('collapsed');
         });
     }
+
+    // Periodic Background TLE Refresh (every 30 mins)
+    setInterval(() => {
+        refreshAllTLEs(false);
+    }, AUTO_REFRESH_INTERVAL_MS);
+
+    // Refresh when tab becomes visible if over 30 mins elapsed
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && (Date.now() - lastRefreshTimestamp > AUTO_REFRESH_INTERVAL_MS)) {
+            refreshAllTLEs(false);
+        }
+    });
 }
 
 // Main Initialization Process
@@ -794,11 +1075,11 @@ window.addEventListener('DOMContentLoaded', () => {
     renderSatelliteSelector();
     setupEventListeners();
 
-    // Run Simulation immediately with synchronous fallback satrecs
+    // Run Simulation immediately with synchronous (or cached) satrecs
     updateSimulation();
 
     // Fetch live TLEs asynchronously in background
-    loadAllTLEData();
+    refreshAllTLEs(false);
 
     // Real-time Update Loop (1 FPS)
     updateTimer = setInterval(() => {
@@ -807,3 +1088,4 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 });
+

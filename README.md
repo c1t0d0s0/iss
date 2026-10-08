@@ -6,9 +6,13 @@ A single-page web app that tracks the International Space Station (ISS) in real 
 
 ## Features
 
-- **Multi-satellite real-time tracking & orbit display** — Tracks the International Space Station (ISS) by default, and allows users to display and track additional satellites:
+- **Multi-satellite real-time tracking & orbit display** — Tracks the International Space Station (ISS) by default, and allows users to display and track up to 8 satellites:
   - **International Space Station (ISS)** (NORAD ID: 25544)
   - **Tiangong Space Station (CSS)** (NORAD ID: 48274)
+  - **Hubble Space Telescope (HST)** (NORAD ID: 20580) — humanity's premier optical space observatory
+  - **Terra (EOS AM-1)** (NORAD ID: 25994) — NASA Earth Observing System flagship
+  - **Landsat 8** (NORAD ID: 39084) — high-resolution land imaging satellite
+  - **Landsat 9** (NORAD ID: 49260) — sister satellite trailing Landsat 8 in the same orbital plane with an 8-day phase offset
   - **BlueWalker 3** (NORAD ID: 53807) — ultra-bright communications satellite with a 64 m² antenna array
   - **Envisat** (NORAD ID: 27386) — massive polar-orbiting Earth observation satellite
 - **Interactive Satellite Selector**:
@@ -22,7 +26,12 @@ A single-page web app that tracks the International Space Station (ISS) in real 
 - **Responsive design**:
   - Desktop: the map pans to keep the active satellite's longitude centered, latitude locked to the equator.
   - Mobile: the dashboard panel starts collapsed, and the map centers directly on the active satellite (both latitude and longitude).
-- **Live TLE data** — fetches the latest orbital elements in parallel from [CelesTrak](https://celestrak.org/), with built-in instant fallback datasets for all 4 satellites.
+- **Automatic & Manual TLE Refresh with Local Caching**:
+  - **Background auto-refresh loop**: Periodically fetches and updates TLEs for all satellites every 30 minutes and whenever the browser tab becomes active again.
+  - **Manual refresh button (🔄)**: Instantly re-fetches the latest orbital elements on demand with a 5-second cooldown debounce.
+  - **TLE Epoch display**: Displays the calculation epoch timestamp of the active satellite in the HUD and popup, allowing users to verify data freshness for frequently updated satellites like Hubble.
+  - **LocalStorage persistence**: Caches fetched TLEs locally so the app boots instantly with the latest known data, even offline or during API downtime.
+- **Live TLE data** — fetches the latest orbital elements in parallel from [CelesTrak](https://celestrak.org/), with built-in instant fallback datasets and persistent local cache.
 
 ## Tech Stack
 

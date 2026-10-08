@@ -130,16 +130,71 @@ body, html {
     text-transform: uppercase;
 }
 
-.sat-selector-hint {
-    font-size: 0.65rem;
+/* Manual TLE Refresh Button */
+.btn-tle-refresh {
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid rgba(0, 243, 255, 0.3);
     color: var(--accent-cyan);
-    opacity: 0.8;
+    font-size: 0.68rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-tle-refresh:hover:not(:disabled) {
+    background: rgba(0, 243, 255, 0.2);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+}
+
+.btn-tle-refresh:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-dim);
+}
+
+.refresh-icon.spinning {
+    display: inline-block;
+    animation: spin-refresh 0.9s linear infinite;
+}
+
+@keyframes spin-refresh {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .sat-list {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    max-height: 230px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.sat-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sat-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.sat-list::-webkit-scrollbar-thumb {
+    background: var(--panel-border);
+    border-radius: 4px;
+}
+
+.sat-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
 }
 
 .sat-item {
@@ -295,6 +350,68 @@ body, html {
     font-size: 0.75rem;
     color: var(--text-dim);
     font-weight: normal;
+}
+
+/* TLE Info Bar */
+.tle-info-bar {
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.68rem;
+}
+
+.tle-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.tle-info-label {
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    letter-spacing: 0.5px;
+}
+
+.tle-info-val {
+    font-family: 'Orbitron', monospace;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.68rem;
+}
+
+.tle-info-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.64rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+}
+
+.tle-info-status .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+    transition: all 0.3s ease;
+}
+
+.tle-info-status.updating .status-dot {
+    background: #f59e0b;
+    box-shadow: 0 0 6px #f59e0b;
+}
+
+.tle-info-status.error .status-dot {
+    background: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
 }
 
 /* Simulator Controls */
@@ -523,6 +640,22 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
 .sat-glow-27386 {
     filter: drop-shadow(0 0 12px #10b981);
+}
+
+.sat-glow-20580 {
+    filter: drop-shadow(0 0 12px #38bdf8);
+}
+
+.sat-glow-25994 {
+    filter: drop-shadow(0 0 12px #84cc16);
+}
+
+.sat-glow-39084 {
+    filter: drop-shadow(0 0 12px #fb7185);
+}
+
+.sat-glow-49260 {
+    filter: drop-shadow(0 0 12px #e879f9);
 }
 
 .orbit-marker-badge {
