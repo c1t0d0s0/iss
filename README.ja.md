@@ -48,7 +48,8 @@
 index.html    ページ構造・マークアップ
 style.css     スタイル全般（ダークテーマ、レイアウト、レスポンシブ対応）
 script.js     アプリロジック（地図・軌道計算・多言語対応・イベント処理）
-config.js     任意・Git管理外: Googleタグマネージャ用のGTM_IDを設定
+config.js     任意・Git管理外: Googleタグマネージャ / Googleアナリティクス用のGTM_IDを設定
+config.example.js  config.js の設定例
 ```
 
 ## 使い方
@@ -61,11 +62,14 @@ python3 -m http.server 8000
 
 その後、ブラウザで `http://localhost:8000/` を開いてください。
 
-`config.js` は任意のファイルでGit管理対象外です。Googleタグマネージャによるアクセス解析を有効にしたい場合のみ、以下の内容で作成してください。
+`config.js` は任意のファイルでGit管理対象外です。アクセス解析を有効にしたい場合のみ、`config.example.js` を `config.js` にコピーしてIDを設定してください。
 
 ```js
-const GTM_ID = "YOUR_GTM_ID";
+const GTM_ID = "GTM-XXXXXXX";   // Googleタグマネージャのコンテナ
+// const GTM_ID = "G-XXXXXXXXXX"; // またはGoogleアナリティクス (gtag.js) の測定ID
 ```
+
+IDが `GTM-` で始まる場合はGoogleタグマネージャのタグが、それ以外の場合はGoogleアナリティクスのタグ (gtag.js) が埋め込まれます。GitHub Actionsでデプロイする場合は、代わりにリポジトリ変数 `GTM_ID` を設定してください。ワークフローがその値から `config.js` を生成します。
 
 ## ライセンス
 

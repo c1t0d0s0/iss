@@ -32,7 +32,10 @@ jobs:
           cp index.html style.css script.js _site/
           if [ -n "$GTM_ID" ]; then
             printf 'const GTM_ID = "%s";\n' "$GTM_ID" > _site/config.js
-            echo "GTM_ID repository variable found — embedding Google tag."
+            case "$GTM_ID" in
+              GTM-*|gtm-*) echo "GTM_ID repository variable found — embedding Google Tag Manager." ;;
+              *) echo "GTM_ID repository variable found — embedding Google Analytics tag." ;;
+            esac
           else
             echo "No GTM_ID repository variable set — skipping Google tag."
           fi

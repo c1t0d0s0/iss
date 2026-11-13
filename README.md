@@ -48,7 +48,8 @@ A single-page web app that tracks the International Space Station (ISS) in real 
 index.html    Page structure and markup
 style.css     All styling (dark theme, layout, responsive breakpoints)
 script.js     App logic (map, orbit calculation, i18n, event handling)
-config.js     Optional, git-ignored: sets GTM_ID for Google Tag Manager analytics
+config.js     Optional, git-ignored: sets GTM_ID for Google Tag Manager / Google Analytics
+config.example.js  Example of config.js
 ```
 
 ## Usage
@@ -61,11 +62,14 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000/` in your browser.
 
-`config.js` is optional and git-ignored — it is only needed if you want to enable Google Tag Manager analytics:
+`config.js` is optional and git-ignored — it is only needed if you want to enable analytics. Copy `config.example.js` to `config.js` and set your ID:
 
 ```js
-const GTM_ID = "YOUR_GTM_ID";
+const GTM_ID = "GTM-XXXXXXX";   // Google Tag Manager container
+// const GTM_ID = "G-XXXXXXXXXX"; // or a Google Analytics (gtag.js) measurement ID
 ```
+
+If the ID starts with `GTM-`, the Google Tag Manager snippet is embedded; otherwise the Google Analytics tag (gtag.js) is embedded. When deploying with GitHub Actions, set the `GTM_ID` repository variable instead; the workflow generates `config.js` from it.
 
 ## License
 

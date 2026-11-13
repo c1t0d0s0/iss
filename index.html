@@ -9,14 +9,22 @@
     <script src="config.js" onerror="this.remove()"></script>
     <script>
         if (typeof GTM_ID !== 'undefined' && GTM_ID) {
-            const gtmScript = document.createElement('script');
-            gtmScript.async = true;
-            gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`;
-            document.head.appendChild(gtmScript);
+            const tagId = String(GTM_ID).trim();
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', GTM_ID);
+            const tagScript = document.createElement('script');
+            tagScript.async = true;
+            if (/^GTM-/i.test(tagId)) {
+                // Google Tag Manager container (GTM-XXXXXXX)
+                window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                tagScript.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(tagId)}`;
+            } else {
+                // Google Analytics / Google tag (e.g. G-XXXXXXXXXX)
+                tagScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(tagId)}`;
+                window.gtag = function(){ window.dataLayer.push(arguments); };
+                window.gtag('js', new Date());
+                window.gtag('config', tagId);
+            }
+            document.head.appendChild(tagScript);
         }
     </script>
 
